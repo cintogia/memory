@@ -1,7 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
+/*some stuff
 
 /*
  * Display the cards on the page
