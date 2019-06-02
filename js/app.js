@@ -62,24 +62,24 @@ function countMoves(el) {
     let star3 = document.querySelector('#star3');
     let star2 = document.querySelector('#star2');
     let star1 = document.querySelector('#star1');
-    total += el;
-    moves.textContent = total;
-    if (total > 16 && total <= 20) {
+    total += el/2;
+    moves.textContent = Math.round(total);
+    if (total > 8 && total <= 10) {
         star3.classList.remove('fa-star');
         star3.classList.add('fa-star-half-o');
-    } else if (total > 20 && total <= 24) {
+    } else if (total > 10 && total <= 12) {
         star3.classList.remove('fa-star-half-o');
         star3.classList.add('fa-star-o');
-    } else if (total > 24 && total <= 28) {
+    } else if (total > 12 && total <= 14) {
         star2.classList.remove('fa-star');
         star2.classList.add('fa-star-half-o');
-    } else if (total > 28 && total <= 32) {
+    } else if (total > 14 && total <= 16) {
         star2.classList.remove('fa-star-half-o');
         star2.classList.add('fa-star-o');
-    } else if (total > 32 && total <= 36) {
+    } else if (total > 16 && total <= 18) {
         star1.classList.remove('fa-star');
         star1.classList.add('fa-star-half-o');
-    } else if (total > 36) {
+    } else if (total > 18) {
         star1.classList.remove('fa-star-half-o');
         star1.classList.add('fa-star-o');
     }
@@ -120,11 +120,13 @@ function misMatch() {
 
 function gameWon() {
     let matchedCards = document.querySelectorAll('.match');
-    if (matchedCards.length === 2) { console.log('you won!'); }
+    if (matchedCards.length === 2) {
+        let page = document.querySelector('.container');
+        page.style.display = "none";
+        document.body.insertAdjacentHTML('afterbegin', '<div class="container newgame"><h1>You Won!</h1><button onClick="window.location.reload()">Start new game!</button></div>');
+        console.log('you won!'); }
 }
-
+//reset
 document.querySelector('.restart').addEventListener('click', () => {
-    let elements = document.querySelectorAll('.card');
-    elements.forEach((el) => { el.removeChild(el.firstChild) });
-    shuffle(cards);
+    window.location.reload();
 })

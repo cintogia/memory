@@ -21,11 +21,28 @@ body {
     font-family: 'Coda', cursive;
 }
 
+button {
+    min-height: 48px;
+    font-family: 'Coda', cursive;
+    border-radius: 10px;
+    background-color: #02ccba;
+    color: #fff;
+}
+
+button:hover {
+    box-shadow: 0 0 20px 0 inset #fff;
+    cursor: pointer;
+}
+
 .container {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
+}
+
+.newgame {
+    height: 50%;
 }
 
 h1 {
