@@ -50,16 +50,6 @@ h1 {
     font-weight: 300;
 }
 
-img {
-    /*background-image: url('../img/008-meowth.svg');*/
-    height: -webkit-fill-available;
-    visibility: hidden;
-}
-
-.open > img, .show > img, .match > img {
-    visibility: visible;
-}
-
 /*
  * Styles for the deck of cards
  */
@@ -67,7 +57,7 @@ img {
 .deck {
     width: 660px;
     min-height: 680px;
-    background-color: #15ff12;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
     padding: 32px;
     border-radius: 10px;
     box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
@@ -79,11 +69,9 @@ img {
 }
 
 .deck .card {
-    transition: transform 1s;
-    transform: rotateY(0deg);
     height: 125px;
     width: 125px;
-    background: linear-gradient(90deg, #ff7979 0%, #ffffff91 100%);
+    background: #2e3d49;
     font-size: 0;
     color: #ffffff;
     border-radius: 8px;
@@ -95,9 +83,8 @@ img {
 }
 
 .deck .card.open {
-    transition: transform 1s;
-    transform: rotateY(180deg);
-    background: #a8d8ff;
+    transform: rotateY(0);
+    background: #02b3e4;
     cursor: default;
 }
 
@@ -106,10 +93,8 @@ img {
 }
 
 .deck .card.match {
-    transition: transform 1s;
-    transform: rotateZ(360deg);
     cursor: default;
-    background: linear-gradient(red 45%, black 50%, white 55%);
+    background: #02ccba;
     font-size: 33px;
 }
 
@@ -138,8 +123,4 @@ img {
 .score-panel .restart {
     float: right;
     cursor: pointer;
-}
-
-footer {
-
 }
