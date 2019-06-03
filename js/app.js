@@ -1,12 +1,7 @@
 /*
  * Create a list that holds all of your cards
  */
-
-let cards = document.querySelectorAll('.card');
-
-let card = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb']
-
-let openCards = [];
+/*some stuff
 
 /*
  * Display the cards on the page
@@ -15,33 +10,21 @@ let openCards = [];
  *   - add each card's HTML to the page
  */
 
-shuffle(card);
-
-for (i = 0; i < cards.length; i++) {
-    const icons = document.createElement('i');
-    const icon = cards[i].appendChild(icons);
-    icon.classList.add('fa', card[i]);
-    //cards[i].addEventListener('click', function() {
-    //  cards[i].classList.add('match');
-    //});
-    //cards[i].insertAdjacentHTML('afterbegin', card[i]);
-}
-
 // Shuffle function from http://stackoverflow.com/a/2450976
-function shuffle(cards) {
-    var currentIndex = cards.length,
-        temporaryValue, randomIndex;
+function shuffle(array) {
+    var currentIndex = array.length, temporaryValue, randomIndex;
 
     while (currentIndex !== 0) {
         randomIndex = Math.floor(Math.random() * currentIndex);
         currentIndex -= 1;
-        temporaryValue = cards[currentIndex];
-        cards[currentIndex] = cards[randomIndex];
-        cards[randomIndex] = temporaryValue;
+        temporaryValue = array[currentIndex];
+        array[currentIndex] = array[randomIndex];
+        array[randomIndex] = temporaryValue;
     }
 
-    return cards;
+    return array;
 }
+
 
 /*
  * set up the event listener for a card. If a card is clicked:
