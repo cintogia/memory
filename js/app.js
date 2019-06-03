@@ -91,10 +91,12 @@ function countMoves(el) {
     }
 }
 
+// event delegation
 const deck = document.querySelector('.deck');
 deck.addEventListener('click', onClick);
 
 function onClick(event) {
+    // makes Listener only valid for list items
     if (event.target.nodeName === 'LI') {
         event.target.classList.add('open', 'show');
         openCards.push(event.target);
