@@ -66,8 +66,10 @@ function countMoves(el) {
     let star3 = document.querySelector('#star3');
     let star2 = document.querySelector('#star2');
     let star1 = document.querySelector('#star1');
+    // divide by two and round clicks to have: one Move = two open cards
     total += el / 2;
     moves.textContent = Math.round(total);
+    // star rating system
     if (total > 8 && total <= 10) {
         star3.classList.remove('fa-star');
         star3.classList.add('fa-star-half-o');
@@ -96,8 +98,11 @@ function onClick(event) {
     if (event.target.nodeName === 'LI') {
         event.target.classList.add('open', 'show');
         openCards.push(event.target);
+        // prevent click on card twice
         event.target.style.pointerEvents = "none";
+        // count every click on a card once and pass it to the appropriate function
         countMoves(1);
+        // compare cards
         if (openCards.length === 2 && openCards[0].firstElementChild.currentSrc ===
             openCards[1].firstElementChild.currentSrc) {
             addMatch();
@@ -109,6 +114,7 @@ function onClick(event) {
     }
 }
 
+// lock cards and prevents clicks
 function addMatch() {
     let cardOne = openCards[0];
     let cardTwo = openCards[1];
@@ -121,6 +127,7 @@ function addMatch() {
     openCards = [];
 }
 
+// show cards for one second and prevent clicks until cards are hidden again
 function misMatch() {
     let cardOne = openCards[0];
     let cardTwo = openCards[1];
@@ -135,6 +142,9 @@ function misMatch() {
     }, 1000);
 }
 
+// show "New Game button" after winning the game
+// TODO: set timeout in order to show a few seconds after winning the game
+// TODO: remove reset Button from score-panel
 function gameWon() {
     let matchedCards = document.querySelectorAll('.match');
     if (matchedCards.length === 16) {
@@ -145,11 +155,11 @@ function gameWon() {
         const newDiv1 = document.body.appendChild(newDiv);
         newDiv1.appendChild(result);
         page.style.display = "none";
-        newDiv1.insertAdjacentHTML('afterbegin', `<h1>You Won!</h1><h1 id="result"></h1><button onClick="window.location.reload()">Start new game!</button>`);
+        newDiv1.insertAdjacentHTML('afterbegin', `<h1>You Won!</h1><button onClick="window.location.reload()">Start new game!</button>`);
         console.log('you won!');
     }
 }
-//reset
+// Reset button, reloads the page onClick
 document.querySelector('.restart').addEventListener('click', () => {
     window.location.reload();
 })
