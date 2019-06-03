@@ -4,15 +4,7 @@
 
 let cards = document.querySelectorAll('.card');
 
-let card = ['./img/008.svg', './img/008.svg',
-'./img/007.svg', './img/007.svg',
-'./img/006.svg', './img/006.svg',
-'./img/005.svg', './img/005.svg',
-'./img/004.svg', './img/004.svg',
-'./img/003.svg', './img/003.svg',
-'./img/002.svg', './img/002.svg',
-'./img/001.svg', './img/001.svg',
-]
+let card = ['fa-diamond', 'fa-diamond', 'fa-paper-plane-o', 'fa-paper-plane-o', 'fa-anchor', 'fa-anchor', 'fa-bolt', 'fa-bolt', 'fa-cube', 'fa-cube', 'fa-leaf', 'fa-leaf', 'fa-bicycle', 'fa-bicycle', 'fa-bomb', 'fa-bomb']
 
 let openCards = [];
 
@@ -26,9 +18,13 @@ let openCards = [];
 shuffle(card);
 
 for (i = 0; i < cards.length; i++) {
-    const icons = document.createElement('img');
+    const icons = document.createElement('i');
     const icon = cards[i].appendChild(icons);
-    icon.setAttribute("src",card[i]);
+    icon.classList.add('fa', card[i]);
+    //cards[i].addEventListener('click', function() {
+    //  cards[i].classList.add('match');
+    //});
+    //cards[i].insertAdjacentHTML('afterbegin', card[i]);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -98,12 +94,11 @@ function onClick(event) {
         openCards.push(event.target);
         event.target.style.pointerEvents = "none";
         countMoves(1);
-        if (openCards.length === 2 && openCards[0].firstElementChild.currentSrc
- === openCards[1].firstElementChild.currentSrc) {
+        if (openCards.length === 2 && openCards[0].children[0].className === openCards[1].children[0].className) {
             addMatch();
             console.log('true');
             gameWon();
-        } else if (openCards.length === 2 && openCards[0].firstElementChild.currentSrc !== openCards[1].firstElementChild.currentSrc) {
+        } else if (openCards.length === 2 && openCards[0].children[0].className !== openCards[1].children[0].className) {
             misMatch();
         }
     }
@@ -138,14 +133,9 @@ function misMatch() {
 function gameWon() {
     let matchedCards = document.querySelectorAll('.match');
     if (matchedCards.length === 16) {
-        const page = document.querySelector('.container');
-        const result = document.querySelector('.score-panel');
-        const newDiv = document.createElement('div');
-        newDiv.classList.add('container','newgame');
-        const newDiv1 = document.body.appendChild(newDiv);
-        newDiv1.appendChild(result);
+        let page = document.querySelector('.container');
         page.style.display = "none";
-        newDiv1.insertAdjacentHTML('afterbegin', `<h1>You Won!</h1><h1 id="result"></h1><button onClick="window.location.reload()">Start new game!</button>`);
+        document.body.insertAdjacentHTML('afterbegin', '<div class="container newgame"><h1>You Won!</h1><button onClick="window.location.reload()">Start new game!</button></div>');
         console.log('you won!');
     }
 }
