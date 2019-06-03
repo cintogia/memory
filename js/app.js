@@ -5,13 +5,13 @@
 let cards = document.querySelectorAll('.card');
 
 let card = ['./img/008.svg', './img/008.svg',
-'./img/007.svg', './img/007.svg',
-'./img/006.svg', './img/006.svg',
-'./img/005.svg', './img/005.svg',
-'./img/004.svg', './img/004.svg',
-'./img/003.svg', './img/003.svg',
-'./img/002.svg', './img/002.svg',
-'./img/001.svg', './img/001.svg',
+    './img/007.svg', './img/007.svg',
+    './img/006.svg', './img/006.svg',
+    './img/005.svg', './img/005.svg',
+    './img/004.svg', './img/004.svg',
+    './img/003.svg', './img/003.svg',
+    './img/002.svg', './img/002.svg',
+    './img/001.svg', './img/001.svg',
 ]
 
 let openCards = [];
@@ -28,7 +28,7 @@ shuffle(card);
 for (i = 0; i < cards.length; i++) {
     const icons = document.createElement('img');
     const icon = cards[i].appendChild(icons);
-    icon.setAttribute("src",card[i]);
+    icon.setAttribute("src", card[i]);
 }
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -98,8 +98,8 @@ function onClick(event) {
         openCards.push(event.target);
         event.target.style.pointerEvents = "none";
         countMoves(1);
-        if (openCards.length === 2 && openCards[0].firstElementChild.currentSrc
- === openCards[1].firstElementChild.currentSrc) {
+        if (openCards.length === 2 && openCards[0].firstElementChild.currentSrc ===
+            openCards[1].firstElementChild.currentSrc) {
             addMatch();
             console.log('true');
             gameWon();
@@ -141,7 +141,7 @@ function gameWon() {
         const page = document.querySelector('.container');
         const result = document.querySelector('.score-panel');
         const newDiv = document.createElement('div');
-        newDiv.classList.add('container','newgame');
+        newDiv.classList.add('container', 'newgame');
         const newDiv1 = document.body.appendChild(newDiv);
         newDiv1.appendChild(result);
         page.style.display = "none";
