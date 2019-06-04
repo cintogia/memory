@@ -23,8 +23,9 @@
             <!-- Modal content -->
             <div class="modal-content">
                 <span class="close">&times;</span>
-                <div>
+                <div class="modal-header">
                     <h1>You won! 🎉🎉</h1>
+                    <p>⏲️Your time: <span id="modal-min"></span>:<span id="modal-sec"></span></p>
                 </div>
                 <div class="modal-body">
                     <p>You needed <span></span> moves to complete!</p>
@@ -48,6 +49,9 @@
             <!-- reset button -->
             <div class="restart">
                 <i class="fa fa-repeat"></i>
+            </div>
+            <div class="timer">
+                <span id="min">00</span>:<span id="sec">00</span>
             </div>
         </section>
 

@@ -100,6 +100,27 @@ function countMoves(el) {
   }
 }
 
+// timer function https://stackoverflow.com/a/5517836
+let minLabel = document.getElementById("min");
+let secLabel = document.getElementById("sec");
+let totalSeconds = 0;
+let timer;
+
+function setTime() {
+  ++totalSeconds;
+  secLabel.innerHTML = pad(totalSeconds % 60);
+  minLabel.innerHTML = pad(parseInt(totalSeconds / 60));
+}
+
+function pad(val) {
+  let valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}
+
 // event delegation
 const deck = document.querySelector(".deck");
 deck.addEventListener("click", onClick);
@@ -107,6 +128,10 @@ deck.addEventListener("click", onClick);
 function onClick(event) {
   // makes Listener only valid for list items
   if (event.target.nodeName === "LI") {
+    // check if timer has already started
+    if (!timer) {
+      timer = setInterval(setTime, 1000);
+    }
     event.target.classList.add("open", "show");
     openCards.push(event.target);
     // prevent click on card twice
@@ -170,7 +195,7 @@ function misMatch() {
 function gameWon() {
   let matchedCards = document.querySelectorAll(".match");
   if (matchedCards.length === 2) {
-
+    clearInterval(timer);
     // Modal https://www.w3schools.com/howto/howto_css_modals.asp
     let modal = document.getElementById("myModal");
 
@@ -181,6 +206,12 @@ function gameWon() {
     // get current rating and show in modal
     let stars = document.querySelector("section>.stars").innerHTML;
     document.querySelector("#result").innerHTML = stars;
+
+    // get current time and show in modal
+    let min = document.querySelector("#min").textContent;
+    let sec = document.querySelector("#sec").textContent;
+    document.querySelector("#modal-min").textContent = min;
+    document.querySelector("#modal-sec").textContent = sec;
 
     // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
