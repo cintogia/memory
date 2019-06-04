@@ -4,9 +4,10 @@
 ## Table of Contents
 
 * [Description](#description)
-* [Getting started](#gettingstarted)
-* [Little Roadmap](#littleroadmap)
-* [Additional information](#additionalinformation)
+* [Getting started](#getting-started)
+* [Little Roadmap](#little-roadmap)
+* [Contributing](#contributing)
+* [Additional information](#additional-information)
 
 ## Description
 
@@ -14,7 +15,7 @@ This game is a quick and simple memory game besed on **HTML**, **CSS** and **Jav
 For the main version Pokemon **SVG** files (/img) are used representing each card.
 Also, there is a second / alternative version using [FontAwesome Icons](http://fontawesome.io).
 
-##### Main features are:
+#### Main features are:
 
  * Move counter: flipping two cards = one move
 
@@ -71,6 +72,11 @@ Icons made by https://www.flaticon.com/packs/pokemon-go [CC BY 3.0](https://crea
 
 Both versions of the game shall be united into one site by adding a "Toggle Theme" button on the index page.
 
+## Contributing
+
+Hopefully more versions to toggle.
+For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ## Additional information
 
-This project was part of the @github/udacity Front-End Web Developer Nanodegree.
+This project is part of my @udacity Front-End Web Developer Nanodegree.
