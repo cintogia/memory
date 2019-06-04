@@ -194,7 +194,7 @@ function misMatch() {
 // show Modal after winning the game
 function gameWon() {
   let matchedCards = document.querySelectorAll(".match");
-  if (matchedCards.length === 2) {
+  if (matchedCards.length === 16) {
     clearInterval(timer);
     // Modal https://www.w3schools.com/howto/howto_css_modals.asp
     let modal = document.getElementById("myModal");
