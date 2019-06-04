@@ -1,20 +1,76 @@
-# Memory Game Project
+# Memory Game
+###### Pokemon / FontAwesome
 
 ## Table of Contents
 
-* [Instructions](#instructions)
-* [Contributing](#contributing)
+* [Description](#description)
+* [Getting started](#gettingstarted)
+* [Little Roadmap](#littleroadmap)
+* [Additional information](#additionalinformation)
 
-## Instructions
+## Description
 
-The starter project has some HTML and CSS styling to display a static version of the Memory Game project. You'll need to convert this project from a static project to an interactive one. This will require modifying the HTML and CSS files, but primarily the JavaScript file.
+This game is a quick and simple memory game besed on **HTML**, **CSS** and **Javascript**.
+For the main version Pokemon **SVG** files (/img) are used representing each card.
+Also, there is a second / alternative version using [FontAwesome Icons](http://fontawesome.io).
 
-To get started, open `js/app.js` and start building out the app's functionality
+##### Main features are:
 
-For specific, detailed instructions, look at the project instructions in the [Udacity Classroom](https://classroom.udacity.com/me).
+ * Move counter: flipping two cards = one move
 
-## Contributing
+ * Star rating system: You'll start with three filled stars. These stars decrease when reaching a specific amount of moves.
+ 	* e.g. < 9 moves to complete the game = three stars
+ 	* < 11 moves = two and a half stars
+ 	* < 13 moves = two stars
+ 	* and so on
 
-This repository is the starter code for _all_ Udacity students. Therefore, we most likely will not accept pull requests.
+ * Timer: which starts on first click on card and finishes after game is won.
 
-For details, check out [CONTRIBUTING.md](CONTRIBUTING.md).
+ * Reset button
+
+### List of Pokemon:
+
+ * Pikachu
+ * Snorlax
+ * Charmander
+ * Bullbasaur
+ * Jigglypuff
+ * Psyduck
+ * Squirtle
+ * Meowth
+
+###### License
+
+Icons made by https://www.flaticon.com/packs/pokemon-go [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/)
+
+## Getting started
+
+#### For Pokemon Version:
+
+```
+<!-- CSS -->
+<link rel="stylesheet" href="css/app.css">
+<!-- script -->
+<script src="js/app.js"></script>
+```
+
+#### For FontAwesome Version:
+
+```
+<!-- CSS -->
+<link rel="stylesheet" href="css/app_fa.css">
+<!-- script -->
+<script src="js/app_fa.js"></script>
+```
+
+##### Please note:
+ * Use index.html as a boilerpate for **Pokemon** Version.
+ * Use index_fa.html as a boilerpate for **FontAwesome** Version.
+
+## Little Roadmap
+
+Both versions of the game shall be united into one site by adding a "Toggle Theme" button on the index page.
+
+## Additional information
+
+This project was part of the @github/udacity Front-End Web Developer Nanodegree.
