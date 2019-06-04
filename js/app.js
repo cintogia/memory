@@ -150,9 +150,13 @@ function misMatch() {
   let cardOne = openCards[0];
   let cardTwo = openCards[1];
   deck.style.pointerEvents = "none";
+
+  // make cards clickable after 1 sec, hiding
   setTimeout(() => {
     deck.removeAttribute("style");
   }, 1000);
+
+  // hide cards after 1 sec
   setTimeout(() => {
     cardOne.classList.remove("open", "show");
     cardOne.removeAttribute("style");
@@ -162,23 +166,26 @@ function misMatch() {
   }, 1000);
 }
 
-// show "New Game button" after winning the game
-// TODO: set timeout in order to show a few seconds after winning the game
-// TODO: remove reset Button from score-panel
+// show Modal after winning the game
 function gameWon() {
   let matchedCards = document.querySelectorAll(".match");
   if (matchedCards.length === 2) {
+
+    // Modal https://www.w3schools.com/howto/howto_css_modals.asp
     let modal = document.getElementById("myModal");
 
+    // get current moves count and show in modal
     let moves = document.querySelector(".moves").textContent;
     document.querySelector(".modal-body>p>span").textContent = moves;
 
+    // get current rating and show in modal
     let stars = document.querySelector("section>.stars").innerHTML;
     document.querySelector("#result").innerHTML = stars;
 
     // Get the <span> element that closes the modal
     let span = document.getElementsByClassName("close")[0];
 
+    // show modal
     modal.style.display = "block";
 
     // When the user clicks on <span> (x), close the modal
