@@ -21,6 +21,12 @@ body {
     font-family: 'Coda', cursive;
 }
 
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+}
+
 button {
     min-height: 48px;
     font-family: 'Coda', cursive;
