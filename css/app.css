@@ -1,70 +1,72 @@
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 *,
 *::before,
 *::after {
-  box-sizing: inherit;
+    box-sizing: inherit;
 }
 
 html,
 body {
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
 }
 
 body {
-  background: #fff repeat url("../img/pokeball.svg"); /* Background pattern from Subtle Patterns */
-  font-family: "Coda", cursive;
+    background: #fff repeat url("../img/pokeball.svg");
+    /* Background pattern from Subtle Patterns */
+    font-family: "Coda", cursive;
 }
 
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
+    position: fixed;
+    bottom: 0;
+    left: 0;
 }
 
 button {
-  min-height: 48px;
-  font-family: "Coda", cursive;
-  border-radius: 10px;
-  background-color: #15ff12;
-  color: #fff;
+    min-width: 48px;
+    min-height: 48px;
+    font-family: "Coda", cursive;
+    font-size: 30px;
+    border-radius: 10px;
+    background-color: #15ff12;
+    color: #fff;
 }
 
 button:hover {
-  box-shadow: 0 0 20px 0 inset #fff;
-  cursor: pointer;
+    box-shadow: 0 0 20px 0 inset #fff;
+    cursor: pointer;
 }
 
 button:focus {
-  outline: auto;
+    outline: auto;
 }
 
 .container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 h1 {
-  font-family: "Open Sans", sans-serif;
-  font-weight: 300;
+    font-family: "Coda", "Open Sans", sans-serif;
 }
 
 img {
-  height: -webkit-fill-available;
-  visibility: hidden;
+    height: -webkit-fill-available;
+    visibility: hidden;
 }
 
-.open > img,
-.show > img,
-.match > img {
-  visibility: visible;
+.open>img,
+.show>img,
+.match>img {
+    visibility: visible;
 }
 
 /*
@@ -72,52 +74,52 @@ img {
  */
 
 .deck {
-  width: 660px;
-  min-height: 680px;
-  background-color: #15ff12;
-  padding: 32px;
-  border-radius: 10px;
-  box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0 0 3em;
+    width: 660px;
+    min-height: 680px;
+    background-color: #15ff12;
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
 }
 
 .deck .card {
-  transition: transform 1s;
-  transform: rotateY(0deg);
-  height: 125px;
-  width: 125px;
-  background: linear-gradient(90deg, #ff7979 0%, #ffffff91 100%);
-  font-size: 0;
-  color: #ffffff;
-  border-radius: 8px;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transition: transform 1s;
+    transform: rotateY(0deg);
+    height: 125px;
+    width: 125px;
+    background: linear-gradient(90deg, #ff7979 0%, #ffffff91 100%);
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
 }
 
 .deck .card.open {
-  transition: transform 1s;
-  transform: rotateY(180deg);
-  background: #a8d8ff;
-  cursor: default;
+    transition: transform 1s;
+    transform: rotateY(180deg);
+    background: #a8d8ff;
+    cursor: default;
 }
 
 .deck .card.show {
-  font-size: 33px;
+    font-size: 33px;
 }
 
 .deck .card.match {
-  transition: transform 1s;
-  transform: rotateZ(360deg);
-  cursor: default;
-  background: linear-gradient(red 45%, black 50%, white 55%);
-  font-size: 33px;
+    transition: transform 1s;
+    transform: rotateZ(360deg);
+    cursor: default;
+    background: linear-gradient(red 45%, black 50%, white 55%);
+    font-size: 33px;
 }
 
 /*
@@ -125,123 +127,176 @@ img {
  */
 
 .score-panel {
-  text-align: left;
-  width: 345px;
-  margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 900;
+    text-align: left;
+    width: 575px;
+    margin-bottom: 10px;
 }
 
 .score-panel .stars {
-  margin: 0;
-  padding: 0;
-  display: inline-block;
-  margin: 0 5px 0 0;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
 }
 
 .score-panel .stars li {
-  list-style: none;
-  display: inline-block;
+    list-style: none;
+    display: inline-block;
 }
 
 .score-panel .restart {
-  float: right;
-  cursor: pointer;
+    float: right;
+    cursor: pointer;
 }
 
 .timer {
-  float: right;
-  padding-right: 10px;
+    float: right;
+    padding-right: 10px;
 }
 
 /* The Modal (background) https://www.w3schools.com/howto/howto_css_modals.asp */
 .modal {
-  display: none; /* Hidden by default */
-  position: fixed; /* Stay in place */
-  z-index: 1; /* Sit on top */
-  padding-top: 100px; /* Location of the box */
-  left: 0;
-  top: 0;
-  width: 100%; /* Full width */
-  height: 100%; /* Full height */
-  overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0, 0, 0); /* Fallback color */
-  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    display: none;
+    /* Hidden by default */
+    position: fixed;
+    /* Stay in place */
+    z-index: 1;
+    /* Sit on top */
+    padding-top: 100px;
+    /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%;
+    /* Full width */
+    height: 100%;
+    /* Full height */
+    overflow: auto;
+    /* Enable scroll if needed */
+    background-color: rgb(0, 0, 0);
+    /* Fallback color */
+    background-color: rgba(0, 0, 0, 0.4);
+    /* Black w/ opacity */
 }
 
 /* Modal Content */
 .modal-content {
-  position: relative;
-  text-align: center;
-  background-color: #fefefe;
-  margin: auto;
-  padding: 20px;
-  border-radius: 10px;
-  border: 1px solid #888;
-  width: 50%;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-  -webkit-animation-name: animatetop;
-  -webkit-animation-duration: 0.4s;
-  animation-name: animatetop;
-  animation-duration: 0.4s;
+    position: relative;
+    text-align: center;
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #888;
+    width: 50%;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
 }
 
 /* Add Animation */
 @-webkit-keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }
 
 @keyframes animatetop {
-  from {
-    top: -300px;
-    opacity: 0;
-  }
-  to {
-    top: 0;
-    opacity: 1;
-  }
+    from {
+        top: -300px;
+        opacity: 0;
+    }
+
+    to {
+        top: 0;
+        opacity: 1;
+    }
 }
 
 /* The Close Button */
 .close {
-  color: #000;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
+    color: #000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
 }
 
 .close:hover,
 .close:focus {
-  color: #555;
-  text-decoration: none;
-  cursor: pointer;
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
 }
 
-.modal-header > p {
-  margin-bottom: 0;
+.modal-header>p {
+    margin-bottom: 0;
 }
 
 .modal-body {
-  padding-bottom: 5px;
-  display: inline-flex;
+    padding-bottom: 5px;
+    display: inline-flex;
 }
 
 .modal-body {
     padding-bottom: 15px;
-  }
+}
 
 
 /* stars in modal */
 #result {
-  padding-left: 5px;
+    padding-left: 5px;
 }
 
 #result li {
-  list-style: none;
-  display: inline-block;
+    list-style: none;
+    display: inline-block;
+}
+
+@media screen and (max-width: 768px) {
+    .deck {
+        max-width: 590px;
+        min-height: auto;
+        padding: 20px 20px 0 20px;
+    }
+
+    .deck .card {
+        margin-bottom: 20px;
+    }
+
+}
+
+@media screen and (max-width: 425px) {
+    .deck {
+        max-width: 375px;
+        min-height: auto;
+        padding: 10px 10px 0 10px;
+    }
+
+    .deck .card {
+        height: 80px;
+        width: 80px;
+        margin-bottom: 10px;
+    }
+
+    .score-panel {
+        font-size: 36px;
+        width: 375px;
+        order: 1;
+    }
+
+    .timer {
+        text-align: center;
+        float: none;
+        padding-top: 10px;
+    }
+
 }
