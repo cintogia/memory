@@ -18,7 +18,7 @@ body {
 
 body {
     background: #fff repeat url("../img/pokeball.svg");
-    /* Background pattern from Subtle Patterns */
+    background-position-y: bottom;
     font-family: "Coda", cursive;
 }
 
@@ -276,10 +276,15 @@ img {
 }
 
 @media screen and (max-width: 425px) {
+    .container {
+        padding-left: 4%;
+    }
+
     .deck {
-        max-width: 375px;
+        max-width: 350px;
         min-height: auto;
-        padding: 10px 10px 0 10px;
+        padding: 10px 5px 0 5px;
+        margin: 0 0 1em;
     }
 
     .deck .card {
@@ -301,11 +306,11 @@ img {
     }
 
     .modal-content {
-      width: 100%;
+        width: 100%;
     }
 
     footer {
-      position: relative;
-      order: 2;
+        position: relative;
+        order: 2;
     }
 }
