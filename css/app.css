@@ -26,6 +26,7 @@ footer {
     position: fixed;
     bottom: 0;
     left: 0;
+    z-index: -1;
 }
 
 button {
@@ -226,7 +227,7 @@ img {
 .close {
     color: #000;
     float: right;
-    font-size: 28px;
+    font-size: 48px;
     font-weight: bold;
 }
 
@@ -299,4 +300,12 @@ img {
         padding-top: 10px;
     }
 
+    .modal-content {
+      width: 100%;
+    }
+
+    footer {
+      position: relative;
+      order: 2;
+    }
 }
