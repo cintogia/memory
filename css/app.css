@@ -49,6 +49,7 @@ button:focus {
 }
 
 .container {
+    overflow: hidden;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -275,11 +276,7 @@ img {
 
 }
 
-@media screen and (max-width: 425px) {
-    .container {
-        padding-left: 4%;
-    }
-
+@media screen and (max-width: 572px) {
     .deck {
         max-width: 350px;
         min-height: auto;
@@ -295,7 +292,7 @@ img {
 
     .score-panel {
         font-size: 36px;
-        width: 375px;
+        width: 338px;
         order: 1;
     }
 
