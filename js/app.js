@@ -237,3 +237,12 @@ function gameWon() {
 document.querySelector(".restart").addEventListener("click", () => {
   window.location.reload();
 });
+
+// install service Worker
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker
+    .register('/sw.js')
+    .then(function() {
+      console.log('[ServiceWorker] Register')
+    })
+}
