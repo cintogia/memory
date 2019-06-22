@@ -72,12 +72,18 @@ let total = 0;
 
 function countMoves(el) {
   let moves = document.querySelector(".moves");
+  let moveContent = document.querySelector(".moveText");
   let star3 = document.querySelector("#star3");
   let star2 = document.querySelector("#star2");
   let star1 = document.querySelector("#star1");
   // divide by two and round clicks to have: one Move = two open cards
   total += el / 2;
-  moves.textContent = Math.round(total);
+  moveNumber = Math.round(total);
+  // create Text Content
+  moveText = moveNumber === 1 ? 'Move' : 'Moves';
+  moves.textContent = `${moveNumber}`;
+  moveContent.textContent = `${moveText}`;
+
   // star rating system
   if (total > 8 && total <= 10) {
     star3.classList.remove("fa-star");
