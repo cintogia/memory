@@ -11,8 +11,8 @@
 
 ## Description
 
-This game is a quick and simple memory game besed on **HTML**, **CSS** and **Javascript**.
-For the main version Pokemon **SVG** files (/img) are used representing each card.
+This game is a quick and simple memory game based on **HTML**, **CSS** and **Javascript**.
+For the main version Pokemon **SVG** files `/img` are used representing each card.
 Also, there is a second / alternative version using [FontAwesome Icons](http://fontawesome.io).
 
 #### Main features are:
@@ -65,8 +65,8 @@ Icons made by https://www.flaticon.com/packs/pokemon-go [CC BY 3.0](https://crea
 ```
 
 ##### Please note:
- * Use index.html as a boilerpate for **Pokemon** Version.
- * Use index_fa.html as a boilerpate for **FontAwesome** Version.
+ * Use `index.html` as a boilerpate for **Pokemon** Version.
+ * Use `index_fa.html` as a boilerpate for **FontAwesome** Version.
 
 ## Little Roadmap
 
