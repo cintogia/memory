@@ -74,16 +74,12 @@ gulp.task("image", cb => {
 	console.log("Images optimized");
 });
 
-gulp.task("minify-css", () => {
-	console.log("CSS minified");
+gulp.task("minify", () => {
+	console.log("MINIFIED FILES");
 	return gulp
 		.src("css/*.css")
 		.pipe(cleanCSS({ compatibility: "ie8" }))
 		.pipe(gulp.dest("dist/css"));
-});
-
-gulp.task("minify-html", () => {
-	console.log("HTML minified");
 	return gulp
 		.src("*.html")
 		.pipe(htmlmin({ collapseWhitespace: true }))
