@@ -9,7 +9,7 @@ const uglifyES5 = require("gulp-uglify"); // minifies ES5
 const uglify = require("gulp-uglify-es").default; // minifies ES6
 const htmlmin = require("gulp-htmlmin"); // minifies HTML
 const cleanCSS = require("gulp-clean-css"); // minifies CSS
-const jsonminify = require('gulp-jsonminify'); // minifies JSON
+const jsonminify = require("gulp-jsonminify"); // minifies JSON
 const imagemin = require("gulp-imagemin"); // optimizes images
 const fontmin = require("gulp-fontmin"); // optimizes fonts
 const brotli = require("gulp-brotli"); // compress using brotli
@@ -56,6 +56,26 @@ gulp.task("sw", cb => {
 			},
 			{
 				urlPattern: /^https:\/\/fonts\.googleapis\.com\/css\?family\=Coda/,
+				handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
+				options: {
+					cacheName: "google-font",
+					cacheableResponse: {
+						statuses: [0, 200]
+					}
+				}
+			},
+			{
+				urlPattern: /^https:\/\/fonts\.gstatic\.com\/s\/coda\/v15\/SLXHc1jY5nQ8FUsGa6aN\.woff2/,
+				handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
+				options: {
+					cacheName: "google-font",
+					cacheableResponse: {
+						statuses: [0, 200]
+					}
+				}
+			},
+			{
+				urlPattern: /^https:\/\/fonts\.gstatic\.com\/s\/coda\/v15\/SLXHc1jY5nQ8FUUGaw\.woff2/,
 				handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
 				options: {
 					cacheName: "google-font",

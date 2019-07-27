@@ -71,7 +71,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/app.js",
-    "revision": "d787060625d08b523acd9feec892cbdd"
+    "revision": "6035557c8bd550da9f3a8e1b8ebc953a"
   },
   {
     "url": "css/app_fa.css",
@@ -87,3 +87,5 @@ workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 workbox.routing.registerRoute(/^https:\/\/maxcdn\.bootstrapcdn\.com\/font-awesome\/4\.6\.1\/css\/font-awesome\.min\.css/, new workbox.strategies.CacheFirst({ "cacheName":"fa-icons", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/maxcdn\.bootstrapcdn\.com\/font-awesome\/4\.6\.1\/fonts\/fontawesome-webfont\.woff2\?v\=4\.6\.1/, new workbox.strategies.CacheFirst({ "cacheName":"fa-fonts", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com\/css\?family\=Coda/, new workbox.strategies.CacheFirst({ "cacheName":"google-font", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com\/s\/coda\/v15\/SLXHc1jY5nQ8FUsGa6aN\.woff2/, new workbox.strategies.CacheFirst({ "cacheName":"google-font", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/fonts\.gstatic\.com\/s\/coda\/v15\/SLXHc1jY5nQ8FUUGaw\.woff2/, new workbox.strategies.CacheFirst({ "cacheName":"google-font", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
