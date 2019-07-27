@@ -43,6 +43,7 @@
     "gulp-brotli": "^1.2.2",
     "gulp-htmlmin": "^5.0.1",
     "gulp-rename": "^1.4.0",
-    "gulp-sourcemaps": "^2.6.5"
+    "gulp-sourcemaps": "^2.6.5",
+    "lodash.template": "^4.5.0"
   }
 }
