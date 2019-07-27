@@ -1,13 +1,21 @@
+/*
+ * "Pokemon Memory Game"
+ * v2.2
+ * Author: Cintogia
+ *
+ */
+
 {
 	"name": "Memory Game",
 	"short_name": "Memory",
-	"start_url": "/index.html",
+  "version": "2.2",
+  "version_name": "Memory-v2.2",
+	"start_url": "/memory/pokemon.html",
 	"theme_color": "#15ff12",
 	"background_color": "#fff",
 	"display": "fullscreen",
 	"orientation": "portrait",
-	"scope": "/",
-	"start_url": "/",
+	"scope": "/memory/",
 	"icons": [{
     "src": "img/touch/icon-48.png",
     "sizes": "48x48",

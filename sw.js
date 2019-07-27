@@ -22,12 +22,8 @@ workbox.core.skipWaiting();
  */
 self.__precacheManifest = [
   {
-    "url": "index_fa.html",
-    "revision": "0541d59a2c23fce75ccc7e9becb9eca4"
-  },
-  {
-    "url": "index.html",
-    "revision": "041492801b01706f89ea6a2904070e7b"
+    "url": "pokemon.html",
+    "revision": "1a2e7152c0626a2bda8ef6ae62b3ba8a"
   },
   {
     "url": "img/001.svg",
@@ -75,7 +71,7 @@ self.__precacheManifest = [
   },
   {
     "url": "js/app.js",
-    "revision": "b4cc4f5a1435ec0999f1a9ad948a6bc3"
+    "revision": "d787060625d08b523acd9feec892cbdd"
   },
   {
     "url": "css/app_fa.css",
@@ -83,10 +79,11 @@ self.__precacheManifest = [
   },
   {
     "url": "css/app.css",
-    "revision": "c92c32ed73df52a776bd66a894312034"
+    "revision": "72303ab4d52cfdd1f9a1d3c6d2856cb5"
   }
 ].concat(self.__precacheManifest || []);
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 workbox.routing.registerRoute(/^https:\/\/maxcdn\.bootstrapcdn\.com\/font-awesome\/4\.6\.1\/css\/font-awesome\.min\.css/, new workbox.strategies.CacheFirst({ "cacheName":"fa-icons", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
+workbox.routing.registerRoute(/^https:\/\/maxcdn\.bootstrapcdn\.com\/font-awesome\/4\.6\.1\/fonts\/fontawesome-webfont\.woff2\?v\=4\.6\.1/, new workbox.strategies.CacheFirst({ "cacheName":"fa-fonts", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');
 workbox.routing.registerRoute(/^https:\/\/fonts\.googleapis\.com\/css\?family\=Coda/, new workbox.strategies.CacheFirst({ "cacheName":"google-font", plugins: [new workbox.cacheableResponse.Plugin({ statuses: [ 0, 200 ] })] }), 'GET');

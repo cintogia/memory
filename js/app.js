@@ -5,7 +5,6 @@
  *
  */
 
-
 /*
  * Create a list that holds all of your cards
  */
@@ -88,7 +87,7 @@ function countMoves(el) {
   total += el / 2;
   moveNumber = Math.round(total);
   // create Text Content
-  moveText = moveNumber === 1 ? 'Move' : 'Moves';
+  moveText = moveNumber === 1 ? "Move" : "Moves";
   moves.textContent = `${moveNumber}`;
   moveContent.textContent = `${moveText}`;
 
@@ -253,10 +252,11 @@ document.querySelector(".restart").addEventListener("click", () => {
 });
 
 // install service Worker
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker
-    .register('/sw.js')
-    .then(function() {
-      console.log('🚀🚀🚀 ServiceWorker registered successfully 🏎️🏎️🏎️')
-    })
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/memory/sw.js").then( registration => {
+    console.log("ServiceWorker registered successfully 🏎️🏎️🏎️");
+  });
+  navigator.serviceWorker.ready.then( registration => {
+    console.log("ServiceWorker ready for TakeOff 🚀🚀🚀");
+  });
 }

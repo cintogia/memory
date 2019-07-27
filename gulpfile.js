@@ -9,6 +9,7 @@ const uglifyES5 = require("gulp-uglify"); // minifies ES5
 const uglify = require("gulp-uglify-es").default; // minifies ES6
 const htmlmin = require("gulp-htmlmin"); // minifies HTML
 const cleanCSS = require("gulp-clean-css"); // minifies CSS
+const jsonminify = require('gulp-jsonminify'); // minifies JSON
 const imagemin = require("gulp-imagemin"); // optimizes images
 const fontmin = require("gulp-fontmin"); // optimizes fonts
 const brotli = require("gulp-brotli"); // compress using brotli
@@ -22,11 +23,11 @@ gulp.task("default", cb => {
 	cb();
 });
 
-gulp.task("sw", () => {
-	return workbox.generateSW({
+gulp.task("sw", cb => {
+	workbox.generateSW({
 		globDirectory: "./",
 		globPatterns: [
-			"./*.html",
+			"./pokemon.html",
 			"./img/*.{png,svg,jpg}",
 			"./js/*.js",
 			"./css/*.css"
@@ -38,6 +39,16 @@ gulp.task("sw", () => {
 				handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
 				options: {
 					cacheName: "fa-icons",
+					cacheableResponse: {
+						statuses: [0, 200]
+					}
+				}
+			},
+			{
+				urlPattern: /^https:\/\/maxcdn\.bootstrapcdn\.com\/font-awesome\/4\.6\.1\/fonts\/fontawesome-webfont\.woff2\?v\=4\.6\.1/,
+				handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
+				options: {
+					cacheName: "fa-fonts",
 					cacheableResponse: {
 						statuses: [0, 200]
 					}
@@ -56,6 +67,8 @@ gulp.task("sw", () => {
 		],
 		swDest: "./sw.js"
 	});
+	console.log("=== SERVICEWORKER CREATED ===");
+	cb();
 });
 
 gulp.task("stream", cb => {
@@ -103,6 +116,10 @@ gulp.task("image", cb => {
 });
 
 gulp.task("minify", cb => {
+	gulp.src(["./manifest.json"])
+		.pipe(jsonminify())
+		.pipe(gulp.dest("dist/"));
+	console.log("MINIFIED JSON FILES");
 	gulp.src("css/*.css")
 		.pipe(cleanCSS({ compatibility: "ie8" }))
 		.pipe(gulp.dest("dist/css"));
@@ -154,13 +171,15 @@ gulp.task("compress", cb => {
 		)
 		.pipe(gulp.dest("dist/js/"));
 	gulp.src("dist/sw.js")
-		.pipe(brotli.compress({
-      extension: 'brotli',
-      skipLarger: true,
-      mode: 0,
-      quality: 9,
-      lgblock: 0
-    }))
+		.pipe(
+			brotli.compress({
+				extension: "brotli",
+				skipLarger: true,
+				mode: 0,
+				quality: 9,
+				lgblock: 0
+			})
+		)
 		.pipe(
 			rename(function(path) {
 				path.extname = "";

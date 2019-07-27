@@ -32,6 +32,7 @@
     "gulp-clean-css": "^4.2.0",
     "gulp-fontmin": "^0.7.4",
     "gulp-imagemin": "^6.0.0",
+    "gulp-jsonminify": "^1.1.0",
     "gulp-ttf2woff2": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "gulp-uglify-es": "^1.0.4",
