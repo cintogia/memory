@@ -17,134 +17,136 @@ const ttf2woff2 = require("gulp-ttf2woff2"); // create WOFF2 Fonts
 const workbox = require("workbox-build"); // sw generator
 
 gulp.task("default", function(cb) {
-    console.log("Memory is loading...");
-    //gulp.series("styles", "scripts", "image", "fonts", "minify-css", "minify-html", "compress");
-    cb();
+	console.log("Memory is loading...");
+	//gulp.series("styles", "scripts", "image", "fonts", "minify-css", "minify-html", "compress");
+	cb();
 });
 
 gulp.task("sw", () => {
-            return workbox.generateSW({
-                    globDirectory: "./",
-                    globPatterns: [
-                        "./*.html",
-                        "./img/*.{png,svg,jpg}",
-                        "./js/*.js",
-                        "./css/*.css"
-                    ],
-                    skipWaiting: true,
-                    runtimeCaching: [{
-                            urlPattern: /^https:\/\/maxcdn\.bootstrapcdn\.com\/font-awesome\/4\.6\.1\/css\/font-awesome\.min\.css/,
-                            handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
-                            options: {
-                                cacheName: "fa-icons",
-                                cacheableResponse: {
-                                    statuses: [0, 200]
-                                }
-                            }
-                        },
-                        {
-                            urlPattern: /^https:\/\/fonts\.googleapis\.com\/css\?family\=Coda/,
-                            handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
-                            options: {
-                                cacheName: "google-font",
-                                cacheableResponse: {
-                                    statuses: [0, 200]
-                                }
-                            }
-                        }
-                        swDest: "./sw.js"
-                    });
-            });
+	return workbox.generateSW({
+		globDirectory: "./",
+		globPatterns: [
+			"./*.html",
+			"./img/*.{png,svg,jpg}",
+			"./js/*.js",
+			"./css/*.css"
+		],
+		skipWaiting: true,
+		runtimeCaching: [
+			{
+				urlPattern: /^https:\/\/maxcdn\.bootstrapcdn\.com\/font-awesome\/4\.6\.1\/css\/font-awesome\.min\.css/,
+				handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
+				options: {
+					cacheName: "fa-icons",
+					cacheableResponse: {
+						statuses: [0, 200]
+					}
+				}
+			},
+			{
+				urlPattern: /^https:\/\/fonts\.googleapis\.com\/css\?family\=Coda/,
+				handler: "CacheFirst", // or NetworkFirst or NetworkOnly or StaleWhileRevalidate or CacheFirst or CacheOnly
+				options: {
+					cacheName: "google-font",
+					cacheableResponse: {
+						statuses: [0, 200]
+					}
+				}
+			}
+		],
+		swDest: "./sw.js"
+	});
+});
 
-        gulp.task("stream", function(cb) {
-            console.log("Memory is loading...");
-            browserSync.init({
-                server: "./"
-            });
-            return watch("./", browserSync.reload);
-            cb();
-        });
+gulp.task("stream", function(cb) {
+	console.log("Memory is loading...");
+	browserSync.init({
+		server: "./"
+	});
+	return watch("./", browserSync.reload);
+	cb();
+});
 
-        gulp.task("styles", function(cb) {
-            gulp.src("css/*.css")
-                .pipe(autoprefixer({ browsers: ["last 2 versions"] }))
-                .pipe(gulp.dest("/css"));
-            //.pipe(browserSync.stream());
-            console.log("CSS optimized");
-            cb();
-        });
+gulp.task("styles", function(cb) {
+	gulp.src("css/*.css")
+		.pipe(autoprefixer({ browsers: ["last 2 versions"] }))
+		.pipe(gulp.dest("/css"));
+	//.pipe(browserSync.stream());
+	console.log("CSS optimized");
+	cb();
+});
 
-        gulp.task("scripts", function(cb) {
-            gulp.src("js/*.js")
-                .pipe(sourcemaps.init())
-                .pipe(uglify())
-                .pipe(sourcemaps.write())
-                .pipe(gulp.dest("dist/js"));
-            cb();
-        });
+gulp.task("scripts", function(cb) {
+	gulp.src("js/*.js")
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest("dist/js"));
+	cb();
+});
 
-        gulp.task("image", cb => {
-            gulp.src("img/*")
-                .pipe(imagemin())
-                .pipe(gulp.dest("dist/img"));
-            gulp.src("img/touch/*")
-                .pipe(imagemin())
-                .pipe(gulp.dest("dist/img/touch"));
-            cb();
-            console.log("Images optimized");
-        });
+gulp.task("image", cb => {
+	gulp.src("img/*")
+		.pipe(imagemin())
+		.pipe(gulp.dest("dist/img"));
+	gulp.src("img/touch/*")
+		.pipe(imagemin())
+		.pipe(gulp.dest("dist/img/touch"));
+	cb();
+	console.log("Images optimized");
+});
 
-        gulp.task("minify", () => {
-            console.log("MINIFIED FILES");
-            return gulp
-                .src("css/*.css")
-                .pipe(cleanCSS({ compatibility: "ie8" }))
-                .pipe(gulp.dest("dist/css"));
-            return gulp
-                .src("*.html")
-                .pipe(htmlmin({ collapseWhitespace: true }))
-                .pipe(gulp.dest("dist/"));
-        });
+gulp.task("minify", () => {
+	console.log("MINIFIED FILES");
+	return gulp
+		.src("css/*.css")
+		.pipe(cleanCSS({ compatibility: "ie8" }))
+		.pipe(gulp.dest("dist/css"));
+	return gulp
+		.src("*.html")
+		.pipe(htmlmin({ collapseWhitespace: true }))
+		.pipe(gulp.dest("dist/"));
+});
 
-        gulp.task("fonts", function(cb) {
-            gulp.src(["font/*.ttf"])
-                .pipe(ttf2woff2())
-                .pipe(gulp.dest("dist/font"));
-            console.log("WOFF2 created");
-            cb();
-            gulp.src("font/*.ttf")
-                .pipe(fontmin())
-                .pipe(gulp.dest("dist/font"));
-            cb();
-        });
+gulp.task("fonts", function(cb) {
+	gulp.src(["font/*.ttf"])
+		.pipe(ttf2woff2())
+		.pipe(gulp.dest("dist/font"));
+	console.log("WOFF2 created");
+	cb();
+	gulp.src("font/*.ttf")
+		.pipe(fontmin())
+		.pipe(gulp.dest("dist/font"));
+	cb();
+});
 
-        gulp.task("compress", function(cb) {
-            gulp.src("dist/*.html")
-                .pipe(brotli.compress({ quality: 11, skipLarger: true }))
-                .pipe(
-                    rename(function(path) {
-                        path.extname = "";
-                    })
-                )
-                .pipe(gulp.dest("dist/"));
-            console.log("HTML Brötli");
-            gulp.src("dist/css/*.css")
-                .pipe(brotli.compress({ quality: 11, skipLarger: true }))
-                .pipe(
-                    rename(function(path) {
-                        path.extname = "";
-                    })
-                )
-                .pipe(gulp.dest("dist/css/"));
-            console.log("CSS Brötli");
-            gulp.src("dist/js/*.js")
-                .pipe(brotli.compress({ quality: 11, skipLarger: true }))
-                .pipe(
-                    rename(function(path) {
-                        path.extname = "";
-                    })
-                )
-                .pipe(gulp.dest("dist/js/"));
-            console.log("JS Brötli");
-            cb();
-        });
+gulp.task("compress", function(cb) {
+	gulp.src("dist/*.html")
+		.pipe(brotli.compress({ quality: 11, skipLarger: true }))
+		.pipe(
+			rename(function(path) {
+				path.extname = "";
+			})
+		)
+		.pipe(gulp.dest("dist/"));
+	console.log("HTML Brötli");
+	gulp.src("dist/css/*.css")
+		.pipe(brotli.compress({ quality: 11, skipLarger: true }))
+		.pipe(
+			rename(function(path) {
+				path.extname = "";
+			})
+		)
+		.pipe(gulp.dest("dist/css/"));
+	console.log("CSS Brötli");
+	gulp.src("dist/js/*.js")
+		.pipe(brotli.compress({ quality: 11, skipLarger: true }))
+		.pipe(
+			rename(function(path) {
+				path.extname = "";
+			})
+		)
+		.pipe(gulp.dest("dist/js/"));
+	console.log("JS Brötli");
+	cb();
+});
