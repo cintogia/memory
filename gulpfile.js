@@ -16,7 +16,7 @@ const rename = require("gulp-rename"); // rename files, create dir
 const ttf2woff2 = require("gulp-ttf2woff2"); // create WOFF2 Fonts
 const workbox = require("workbox-build"); // sw generator
 
-gulp.task("default", function(cb) {
+gulp.task("default", cb => {
 	console.log("Memory is loading...");
 	//gulp.series("styles", "scripts", "image", "fonts", "minify-css", "minify-html", "compress");
 	cb();
@@ -58,16 +58,16 @@ gulp.task("sw", () => {
 	});
 });
 
-gulp.task("stream", function(cb) {
+gulp.task("stream", cb => {
 	console.log("Memory is loading...");
 	browserSync.init({
-		server: "./"
+		server: "./dist/"
 	});
-	return watch("./", browserSync.reload);
+	return watch("./dist/", browserSync.reload);
 	cb();
 });
 
-gulp.task("styles", function(cb) {
+gulp.task("styles", cb => {
 	gulp.src("css/*.css")
 		.pipe(autoprefixer({ browsers: ["last 2 versions"] }))
 		.pipe(gulp.dest("/css"));
@@ -76,13 +76,19 @@ gulp.task("styles", function(cb) {
 	cb();
 });
 
-gulp.task("scripts", function(cb) {
+gulp.task("scripts", cb => {
 	gulp.src("js/*.js")
 		.pipe(sourcemaps.init())
 		.pipe(uglify())
 		.pipe(sourcemaps.write())
 		.pipe(gulp.dest("dist/js"));
+	gulp.src("sw.js")
+		.pipe(sourcemaps.init())
+		.pipe(uglify())
+		.pipe(sourcemaps.write())
+		.pipe(gulp.dest("dist/"));
 	cb();
+	console.log("SCRIPTS OPTIMIZED");
 });
 
 gulp.task("image", cb => {
@@ -96,19 +102,19 @@ gulp.task("image", cb => {
 	console.log("Images optimized");
 });
 
-gulp.task("minify", () => {
-	console.log("MINIFIED FILES");
-	return gulp
-		.src("css/*.css")
+gulp.task("minify", cb => {
+	gulp.src("css/*.css")
 		.pipe(cleanCSS({ compatibility: "ie8" }))
 		.pipe(gulp.dest("dist/css"));
-	return gulp
-		.src("*.html")
+	console.log("MINIFIED CSS FILES");
+	gulp.src("./*.html")
 		.pipe(htmlmin({ collapseWhitespace: true }))
 		.pipe(gulp.dest("dist/"));
+	console.log("MINIFIED HTML FILES");
+	cb();
 });
 
-gulp.task("fonts", function(cb) {
+gulp.task("fonts", cb => {
 	gulp.src(["font/*.ttf"])
 		.pipe(ttf2woff2())
 		.pipe(gulp.dest("dist/font"));
@@ -120,9 +126,9 @@ gulp.task("fonts", function(cb) {
 	cb();
 });
 
-gulp.task("compress", function(cb) {
+gulp.task("compress", cb => {
 	gulp.src("dist/*.html")
-		.pipe(brotli.compress({ quality: 11, skipLarger: true }))
+		.pipe(brotli.compress({ quality: 9, skipLarger: true }))
 		.pipe(
 			rename(function(path) {
 				path.extname = "";
@@ -140,13 +146,27 @@ gulp.task("compress", function(cb) {
 		.pipe(gulp.dest("dist/css/"));
 	console.log("CSS Brötli");
 	gulp.src("dist/js/*.js")
-		.pipe(brotli.compress({ quality: 11, skipLarger: true }))
+		.pipe(brotli.compress({ quality: 9, skipLarger: true }))
 		.pipe(
 			rename(function(path) {
 				path.extname = "";
 			})
 		)
 		.pipe(gulp.dest("dist/js/"));
+	gulp.src("dist/sw.js")
+		.pipe(brotli.compress({
+      extension: 'brotli',
+      skipLarger: true,
+      mode: 0,
+      quality: 9,
+      lgblock: 0
+    }))
+		.pipe(
+			rename(function(path) {
+				path.extname = "";
+			})
+		)
+		.pipe(gulp.dest("dist/"));
 	console.log("JS Brötli");
 	cb();
 });

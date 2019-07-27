@@ -1,4 +1,12 @@
 /*
+ * "Pokemon Memory Game"
+ * v2.2
+ * Author: Cintogia
+ *
+ */
+
+
+/*
  * Create a list that holds all of your cards
  */
 
@@ -249,6 +257,6 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker
     .register('/sw.js')
     .then(function() {
-      console.log('[ServiceWorker] Register')
+      console.log('🚀🚀🚀 ServiceWorker registered successfully 🏎️🏎️🏎️')
     })
 }
